@@ -1,3 +1,3 @@
-class Cell(val coordinate: Coordinate) {
-  override def toString: String = coordinate.toString
+class Cell(val coordinate: Coordinate, val state: CellState) {
+  override def toString: String = coordinate.toString + state.toString
 }

@@ -10,7 +10,7 @@ class GridVisualizer(canvas: PApplet) {
     val cellSize = math.min(canvas.width / (simulationMap.width + 0.5) , canvas.height / (simulationMap.height + 0.5))
     canvas.stroke(240)
     canvas.fill(255)
-    createHexagon(cell.coordinate, cellSize)
+    createHexagon(cell.coordinate, cellSize, cell.state)
   }
 
   def widthToRadius(width: Double): Double = width / math.sqrt(3)
@@ -27,8 +27,15 @@ class GridVisualizer(canvas: PApplet) {
     else Coordinate((x + width / 2).toInt, y.toInt)
   }
 
-  def createHexagon(center: Coordinate, width: Double) = {
+  def createHexagon(center: Coordinate, width: Double, state: CellState) = {
     val numberOfEdges = 6
+
+    state match {
+      case Wall => canvas.fill(0)
+      case Empty => canvas.fill(255)
+    }
+
+
     canvas.beginShape()
     for (i <- 1 to numberOfEdges) {
       val corner = hexCorner(center, width, i)

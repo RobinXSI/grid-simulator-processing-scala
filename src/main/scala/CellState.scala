@@ -1,4 +1,5 @@
-object CellState extends Enumeration {
-  val None, Active, Start, End, Wall, Visited, Path
+sealed trait CellState { }
+case object Empty extends CellState { }
+case object Active extends CellState { }
+case object Wall extends CellState { }
 
-}

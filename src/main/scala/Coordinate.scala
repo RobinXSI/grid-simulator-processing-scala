@@ -1,5 +1,5 @@
 
-class Coordinate(val x: Int, val y: Int) {
-  override def toString: String = x + "-" + y
+case class Coordinate(x: Int, y: Int) {
+  override def toString: String = x + ":" + y
 
 }
